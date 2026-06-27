@@ -51,7 +51,7 @@ function App() {
           ) : (
             <div className="products-grid">
               {products.map(product => {
-                const imageSrc = import.meta.env.BASE_URL + product.folder + '/1.jpg'
+                const imageSrc = import.meta.env.BASE_URL + product.folder + '/1.jpeg'
 
                 return (
                   <div key={product.id} className="product-card">

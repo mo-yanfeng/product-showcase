@@ -63,7 +63,7 @@ function Product() {
   }
 
   const imageUrls = Array.from({ length: 6 }, (_, i) =>
-    import.meta.env.BASE_URL + product.folder + '/' + (i + 1) + '.jpg'
+    import.meta.env.BASE_URL + product.folder + '/' + (i + 1) + '.jpeg'
   )
 
   return (
