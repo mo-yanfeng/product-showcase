@@ -70,7 +70,7 @@ function App() {
                       <p className="product-card-desc">{product.description}</p>
                       <div className="product-card-footer">
                         <span className="product-card-price">{product.price}</span>
-                        <Link to={`/product/${product.id}`} className="qr-btn">📱 QR Code</Link>
+                        <Link to={`/qr/${product.id}`} className="qr-btn">📱 QR Code</Link>
                       </div>
                     </div>
                   </div>
