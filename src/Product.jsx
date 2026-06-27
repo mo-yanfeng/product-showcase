@@ -9,16 +9,7 @@ function Product() {
   const qrRef = useRef(null)
 
   useEffect(() => {
-    if (!id) {
-      return
-    }
-
-    const productUrl = window.location.href
-    QRCode.toCanvas(qrRef.current, productUrl, {
-      width: 180,
-      margin: 2,
-      color: { dark: '#333333', light: '#ffffff' }
-    })
+    if (!id) return
 
     fetch(import.meta.env.BASE_URL + 'products.json')
       .then(res => res.json())
@@ -31,6 +22,17 @@ function Product() {
         setLoading(false)
       })
   }, [id])
+
+  useEffect(() => {
+    if (!qrRef.current) return
+
+    const productUrl = window.location.href
+    QRCode.toCanvas(qrRef.current, productUrl, {
+      width: 180,
+      margin: 2,
+      color: { dark: '#333333', light: '#ffffff' }
+    })
+  }, [product])
 
   if (loading) {
     return (
