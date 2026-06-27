@@ -4,8 +4,8 @@
   "products": [
     {
       "id": "product-001",
-      "name": "Wireless Headphones",
-      "description": "Premium noise-cancelling wireless headphones with 30-hour battery life.",
+      "name": "赵自腾",
+      "description": "赵自腾的合同内容",
       "folder": "product-001",
       "images": ["1.jpeg", "2.jpeg", "3.jpeg"]
     },
