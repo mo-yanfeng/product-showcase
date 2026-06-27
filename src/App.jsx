@@ -1,20 +1,11 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import QRCode from 'qrcode'
 
 function App() {
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const siteQrRef = useRef(null)
 
   useEffect(() => {
-    const siteUrl = window.location.href
-    QRCode.toCanvas(siteQrRef.current, siteUrl, {
-      width: 160,
-      margin: 2,
-      color: { dark: '#333333', light: '#ffffff' }
-    })
-
     fetch(import.meta.env.BASE_URL + 'products.json')
       .then(res => res.json())
       .then(data => {
@@ -30,18 +21,9 @@ function App() {
     <div className="app">
       <header>
         <h1>Product Showcase</h1>
-        <p>Scan QR code to view product details</p>
       </header>
 
       <main>
-        <section className="qr-section">
-          <h2>Site QR Code</h2>
-          <div className="qr-container">
-            <canvas ref={siteQrRef} />
-          </div>
-          <p className="url-text">{window.location.href}</p>
-        </section>
-
         <section className="products-section">
           <h2>Products</h2>
           {loading ? (
@@ -61,16 +43,13 @@ function App() {
                       src={imageSrc}
                       alt={product.name}
                       className="product-card-image"
-                      onError={(e) => {
-                        e.target.src = `https://picsum.photos/400/300?random=${Math.random()}`
-                      }}
                     />
                     <div className="product-card-content">
                       <h3 className="product-card-name">{product.name}</h3>
                       <p className="product-card-desc">{product.description}</p>
                       <div className="product-card-footer">
                         <span className="product-card-price">{product.price}</span>
-                        <Link to={`/qr/${product.id}`} className="qr-btn">📱 QR Code</Link>
+                        <Link to={`/product/${product.id}`} className="view-btn">View Details</Link>
                       </div>
                     </div>
                   </div>

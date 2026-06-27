@@ -5,6 +5,7 @@ function Product() {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [selectedImage, setSelectedImage] = useState(null)
 
   useEffect(() => {
     if (!id) return
@@ -25,12 +26,9 @@ function Product() {
     return (
       <div className="app">
         <header>
-          <Link to="/" className="back-link">← Back to Products</Link>
+          <Link to="/" className="back-link">← Back</Link>
           <h1>Loading...</h1>
         </header>
-        <main>
-          <p>Loading product...</p>
-        </main>
       </div>
     )
   }
@@ -39,12 +37,9 @@ function Product() {
     return (
       <div className="app">
         <header>
-          <Link to="/" className="back-link">← Back to Products</Link>
+          <Link to="/" className="back-link">← Back</Link>
           <h1>Product not found</h1>
         </header>
-        <main>
-          <p>The product you're looking for doesn't exist.</p>
-        </main>
       </div>
     )
   }
@@ -53,26 +48,39 @@ function Product() {
     import.meta.env.BASE_URL + product.folder + '/' + img
   )
 
+  const heroImage = selectedImage || imageUrls[0]
+
   return (
     <div className="app">
       <header>
-        <Link to="/" className="back-link">← Back to Products</Link>
+        <Link to="/" className="back-link">← Back</Link>
         <h1>{product.name}</h1>
       </header>
 
-      <main>
-        <section className="product-detail">
-          <div className="product-info">
-            <p className="product-price">{product.price}</p>
-            <p className="product-description">{product.description}</p>
-          </div>
+      <main className="product-page">
+        <section className="hero-section">
+          <img
+            src={heroImage}
+            alt={product.name}
+            className="hero-image"
+          />
+        </section>
 
-          <div className="product-gallery">
+        <section className="info-section">
+          <div className="price-tag">{product.price}</div>
+          <p className="description">{product.description}</p>
+        </section>
+
+        <section className="gallery-section">
+          <h2>Gallery</h2>
+          <div className="gallery-grid">
             {imageUrls.map((url, index) => (
               <img
                 key={index}
                 src={url}
-                alt={`${product.name} - Image ${index + 1}`}
+                alt={`${product.name} - ${index + 1}`}
+                className={`gallery-thumb ${selectedImage === url ? 'selected' : ''}`}
+                onClick={() => setSelectedImage(url)}
               />
             ))}
           </div>
