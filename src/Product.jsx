@@ -67,7 +67,6 @@ function Product() {
         </section>
 
         <section className="info-section">
-          <div className="price-tag">{product.price}</div>
           <p className="description">{product.description}</p>
         </section>
 

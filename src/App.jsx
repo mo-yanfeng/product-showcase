@@ -48,7 +48,6 @@ function App() {
                       <h3 className="product-card-name">{product.name}</h3>
                       <p className="product-card-desc">{product.description}</p>
                       <div className="product-card-footer">
-                        <span className="product-card-price">{product.price}</span>
                         <Link to={`/product/${product.id}`} className="view-btn">View Details</Link>
                       </div>
                     </div>

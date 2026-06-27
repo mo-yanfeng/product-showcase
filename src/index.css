@@ -101,14 +101,7 @@ main {
 
 .product-card-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.product-card-price {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1a1a1a;
+  justify-content: flex-end;
 }
 
 .view-btn {
@@ -145,13 +138,6 @@ main {
   text-align: center;
   margin-bottom: 2.5rem;
   padding: 0 1rem;
-}
-
-.price-tag {
-  font-size: 1.8rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-  color: #1a1a1a;
 }
 
 .description {
