@@ -1,12 +1,10 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import QRCode from 'qrcode'
 
 function Product() {
   const { id } = useParams()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
-  const qrRef = useRef(null)
 
   useEffect(() => {
     if (!id) return
@@ -22,17 +20,6 @@ function Product() {
         setLoading(false)
       })
   }, [id])
-
-  useEffect(() => {
-    if (!qrRef.current) return
-
-    const productUrl = window.location.href
-    QRCode.toCanvas(qrRef.current, productUrl, {
-      width: 180,
-      margin: 2,
-      color: { dark: '#333333', light: '#ffffff' }
-    })
-  }, [product])
 
   if (loading) {
     return (
@@ -62,8 +49,8 @@ function Product() {
     )
   }
 
-  const imageUrls = Array.from({ length: 6 }, (_, i) =>
-    import.meta.env.BASE_URL + product.folder + '/' + (i + 1) + '.jpeg'
+  const imageUrls = (product.images || []).map(img =>
+    import.meta.env.BASE_URL + product.folder + '/' + img
   )
 
   return (
@@ -75,11 +62,6 @@ function Product() {
 
       <main>
         <section className="product-detail">
-          <div className="product-qr-section">
-            <canvas ref={qrRef} />
-            <p className="url-text">{window.location.href}</p>
-          </div>
-
           <div className="product-info">
             <p className="product-price">{product.price}</p>
             <p className="product-description">{product.description}</p>
@@ -91,9 +73,6 @@ function Product() {
                 key={index}
                 src={url}
                 alt={`${product.name} - Image ${index + 1}`}
-                onError={(e) => {
-                  e.target.style.display = 'none'
-                }}
               />
             ))}
           </div>

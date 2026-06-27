@@ -7,21 +7,24 @@
       "name": "Wireless Headphones",
       "description": "Premium noise-cancelling wireless headphones with 30-hour battery life.",
       "price": "$299",
-      "folder": "product-001"
+      "folder": "product-001",
+      "images": ["1.jpeg", "2.jpeg", "3.jpeg"]
     },
     {
       "id": "product-002",
       "name": "Smart Watch",
       "description": "Advanced fitness tracking with heart rate monitor and GPS.",
       "price": "$199",
-      "folder": "product-002"
+      "folder": "product-002",
+      "images": ["1.jpeg", "2.jpeg"]
     },
     {
       "id": "product-003",
       "name": "Portable Speaker",
       "description": "Waterproof Bluetooth speaker with 360° sound.",
       "price": "$89",
-      "folder": "product-003"
+      "folder": "product-003",
+      "images": ["1.jpeg", "2.jpeg"]
     }
   ]
 }
