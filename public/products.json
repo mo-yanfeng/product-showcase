@@ -1,27 +1,29 @@
 {
-  "siteTitle": "Product Showcase",
-  "siteDescription": "View product details",
   "products": [
     {
       "id": "product-001",
-      "name": "赵自腾",
-      "description": "赵自腾的合同内容",
       "folder": "product-001",
-      "images": ["1.jpeg", "2.jpeg", "3.jpeg"]
+      "images": [
+        "1.jpeg",
+        "2.jpeg",
+        "3.jpeg"
+      ]
     },
     {
       "id": "product-002",
-      "name": "Smart Watch",
-      "description": "Advanced fitness tracking with heart rate monitor and GPS.",
       "folder": "product-002",
-      "images": ["1.jpeg", "2.jpeg"]
+      "images": [
+        "1.jpeg",
+        "2.jpeg"
+      ]
     },
     {
       "id": "product-003",
-      "name": "Portable Speaker",
-      "description": "Waterproof Bluetooth speaker with 360° sound.",
       "folder": "product-003",
-      "images": ["1.jpeg", "2.jpeg"]
+      "images": [
+        "1.jpeg",
+        "2.jpeg"
+      ]
     }
   ]
 }

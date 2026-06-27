@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import logo from './assets/logo.png'
 
 function Product() {
   const { id } = useParams()
@@ -26,7 +27,7 @@ function Product() {
     return (
       <div className="app">
         <header>
-          <h1>Loading...</h1>
+          <img src={logo} alt="Logo" className="logo" />
         </header>
       </div>
     )
@@ -36,7 +37,7 @@ function Product() {
     return (
       <div className="app">
         <header>
-          <h1>Product not found</h1>
+          <img src={logo} alt="Logo" className="logo" />
         </header>
       </div>
     )
@@ -51,15 +52,14 @@ function Product() {
   return (
     <div className="app">
       <header>
-        <h1>{product.name}</h1>
-        <p className="header-desc">{product.description}</p>
+        <img src={logo} alt="Logo" className="logo" />
       </header>
 
       <main className="product-page">
         <section className="hero-section">
           <img
             src={heroImage}
-            alt={product.name}
+            alt={product.id}
             className="hero-image"
           />
         </section>
@@ -71,7 +71,7 @@ function Product() {
               <img
                 key={index}
                 src={url}
-                alt={`${product.name} - ${index + 1}`}
+                alt={`${product.id} - ${index + 1}`}
                 className={`gallery-thumb ${selectedImage === url ? 'selected' : ''}`}
                 onClick={() => setSelectedImage(url)}
               />

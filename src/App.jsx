@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import logo from './assets/logo.png'
 
 function App() {
   const [products, setProducts] = useState([])
@@ -20,7 +21,7 @@ function App() {
   return (
     <div className="app">
       <header>
-        <h1>Product Showcase</h1>
+        <img src={logo} alt="Logo" className="logo" />
       </header>
 
       <main>
@@ -41,15 +42,11 @@ function App() {
                   <div key={product.id} className="product-card">
                     <img
                       src={imageSrc}
-                      alt={product.name}
+                      alt={product.id}
                       className="product-card-image"
                     />
-                    <div className="product-card-content">
-                      <h3 className="product-card-name">{product.name}</h3>
-                      <p className="product-card-desc">{product.description}</p>
-                      <div className="product-card-footer">
-                        <Link to={`/product/${product.id}`} className="view-btn">View Details</Link>
-                      </div>
+                    <div className="product-card-footer">
+                      <Link to={`/product/${product.id}`} className="view-btn">View Details</Link>
                     </div>
                   </div>
                 )
