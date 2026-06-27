@@ -1,0 +1,27 @@
+{
+  "siteTitle": "Product Showcase",
+  "siteDescription": "Scan QR code to view product details",
+  "products": [
+    {
+      "id": "product-001",
+      "name": "Wireless Headphones",
+      "description": "Premium noise-cancelling wireless headphones with 30-hour battery life.",
+      "price": "$299",
+      "folder": "product-001"
+    },
+    {
+      "id": "product-002",
+      "name": "Smart Watch",
+      "description": "Advanced fitness tracking with heart rate monitor and GPS.",
+      "price": "$199",
+      "folder": "product-002"
+    },
+    {
+      "id": "product-003",
+      "name": "Portable Speaker",
+      "description": "Waterproof Bluetooth speaker with 360° sound.",
+      "price": "$89",
+      "folder": "product-003"
+    }
+  ]
+}
