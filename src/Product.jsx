@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 function Product() {
   const { id } = useParams()
@@ -26,7 +26,6 @@ function Product() {
     return (
       <div className="app">
         <header>
-          <Link to="/" className="back-link">← Back</Link>
           <h1>Loading...</h1>
         </header>
       </div>
@@ -37,7 +36,6 @@ function Product() {
     return (
       <div className="app">
         <header>
-          <Link to="/" className="back-link">← Back</Link>
           <h1>Product not found</h1>
         </header>
       </div>
@@ -53,8 +51,8 @@ function Product() {
   return (
     <div className="app">
       <header>
-        <Link to="/" className="back-link">← Back</Link>
         <h1>{product.name}</h1>
+        <p className="header-desc">{product.description}</p>
       </header>
 
       <main className="product-page">
@@ -64,10 +62,6 @@ function Product() {
             alt={product.name}
             className="hero-image"
           />
-        </section>
-
-        <section className="info-section">
-          <p className="description">{product.description}</p>
         </section>
 
         <section className="gallery-section">
