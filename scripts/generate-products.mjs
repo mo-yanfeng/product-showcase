@@ -4,18 +4,40 @@ import path from 'path'
 const publicDir = path.join(process.cwd(), 'public')
 const outputFile = path.join(publicDir, 'products.json')
 
-// 扫描 public 目录下的文件夹
+const IMAGE_EXTENSIONS = new Set([
+  'jpg', 'jpeg', 'png', 'gif', 'webp',
+  'svg', 'bmp', 'ico', 'tif', 'tiff',
+  'heic', 'heif', 'avif'
+])
+
 const folders = fs.readdirSync(publicDir, { withFileTypes: true })
   .filter(dirent => dirent.isDirectory())
+  .filter(dirent => !['.git', 'node_modules', 'dist'].includes(dirent.name))
   .map(dirent => dirent.name)
 
-// 为每个文件夹生成产品配置
+console.log(`Found ${folders.length} folders in public/:`, folders)
+
 const products = folders.map(folder => {
   const folderPath = path.join(publicDir, folder)
   
-  // 扫描文件夹内的所有图片文件
-  const images = fs.readdirSync(folderPath)
-    .filter(file => /\.(jpg|jpeg|png|gif|webp)$/i.test(file))
+  let files = []
+  try {
+    files = fs.readdirSync(folderPath)
+    console.log(`  ${folder}: ${files.length} files -`, files)
+  } catch (err) {
+    console.error(`Error reading folder ${folder}: ${err.message}`)
+    files = []
+  }
+  
+  const images = files
+    .filter(file => {
+      const ext = file.split('.').pop()?.toLowerCase()
+      const isImage = IMAGE_EXTENSIONS.has(ext)
+      if (!isImage && file.includes('.')) {
+        console.log(`    Skipping non-image: ${file} (ext: ${ext})`)
+      }
+      return isImage
+    })
     .sort()
   
   return {
@@ -25,11 +47,12 @@ const products = folders.map(folder => {
   }
 })
 
-// 生成 products.json
 const output = {
   products: products
 }
 
 fs.writeFileSync(outputFile, JSON.stringify(output, null, 2))
-console.log(`Generated products.json with ${products.length} products:`)
-products.forEach(p => console.log(`  - ${p.id}: ${p.images.length} images`))
+console.log(`\nGenerated products.json with ${products.length} products:`)
+products.forEach(p => {
+  console.log(`  - ${p.id}: ${p.images.length} images`)
+})
