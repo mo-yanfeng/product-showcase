@@ -12,7 +12,9 @@ function Product() {
   useEffect(() => {
     if (!id) return
 
-    fetch(import.meta.env.BASE_URL + 'products.json')
+    // Add timestamp to force refresh products.json
+    const timestamp = Date.now()
+    fetch(import.meta.env.BASE_URL + 'products.json?t=' + timestamp)
       .then(res => res.json())
       .then(data => {
         const found = data.products.find(p => p.id === id)
