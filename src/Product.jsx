@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import logo from './assets/logo.png'
 
 function Product() {
   const { id } = useParams()
-  const navigate = useNavigate()
   const [product, setProduct] = useState(null)
   const [loading, setLoading] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null)
@@ -53,12 +52,8 @@ function Product() {
 
   return (
     <div className="app">
-      <header className="product-header">
-        <button className="back-btn" onClick={() => navigate(-1)}>
-          ← Back
-        </button>
+      <header>
         <img src={logo} alt="Logo" className="logo" />
-        <div style={{ width: '60px' }}></div>
       </header>
 
       <main className="product-page">
